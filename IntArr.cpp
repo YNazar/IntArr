@@ -79,18 +79,16 @@ void Intstr::resiz(size_t newsiz)
     for (size_t i=0; i<siz; i++)
         tmp[i]=arr[i];
     delete[] arr;
+    siz=newsiz;
     arr = tmp;
 }
-Intstr Intstr::operator+ (const Intstr  &rhs)
+Intstr Intstr::combine (const Intstr  &a,const Intstr& b)
 {
-    Intstr res(siz+rhs.siz);
-    for ( size_t i=0; i<siz; i++ )
-        res.arr[i]=arr[i];
-    for (size_t i=0;  i<rhs.siz; i++)
-        res.arr[siz+i]=rhs.arr[i];
+    Intstr res=a;
+    a+=b;
     return res;
 }
-void Intstr::operator+=(const Intstr&rhs)
+void Intstr::combineit(const Intstr&rhs)
 {
     int *tmp=new int[siz+rhs.siz];
     for(size_t i=0; i<siz; i++)
