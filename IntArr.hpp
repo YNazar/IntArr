@@ -15,8 +15,8 @@ public:
     size_t  get_size () const;
     int&  operator [] (size_t idx);
     const int& operator[](size_t idx)const;
-    Intstr  operator+ (const Intstr& rhs);
-    void operator+=(const Intstr&rhs);
+    Intstr  combine (const Intstr& a,const Intstr& b);
+    void combineit (const Intstr&rhs);
     const int* get_arr()const {return arr;};
     void  dltelmt( int a);
     void  findelm(int a, size_t &number)const;
