@@ -1,29 +1,35 @@
 #ifndef INTSTR_H_INCLUDED
 #define INTSTR_H_INCLUDED
 #include <iostream>
-class Intstr
+class Intarr
 {
 public:
-    Intstr();
-    explicit Intstr(size_t ins);
-    Intstr ( const int *arr,size_t sz);
-    ~Intstr(){delete [] arr;}
-    Intstr(const Intstr &rhs);
-    Intstr operator=(const Intstr& rhs);
+    Intarr();
+    explicit Intarr(size_t ins);
+    Intarr ( const int *arr,size_t sz);
+    ~Intarr(){delete [] arr;}
+    Intarr(const Intarr &rhs);
+    Intarr operator=(const Intarr& rhs);
     void printarr();
      void scanstr();
     size_t  get_size () const;
+    const int* get_arr()const {return arr;};
     int&  operator [] (size_t idx);
     const int& operator[](size_t idx)const;
-    Intstr  combine (const Intstr& a,const Intstr& b);
-    void combineit (const Intstr&rhs);
-    const int* get_arr()const {return arr;};
+    void operator+=(const Intarr&a);
+    void operator*=(const Intarr&a);
+    void operator+=(int x);
+    void operator*=(int x);
     void  dltelmt( int a);
     void  findelm(int a, size_t &number)const;
 private:
-    size_t siz;
     int *arr;
+     size_t siz;
+     size_t reserv;
     void resiz(size_t newsiz);
 };
-
+Intarr  operator+ (const Intarr& a,const Intarr& b);
+Intarr operator+(const Intarr& a,int x);
+Intarr operator* (const Intarr& a,const Intarr& b);
+Intarr operator* (const Intarr& a,int x);
 #endif // INTSTR_H_INCLUDED
