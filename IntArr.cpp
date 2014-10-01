@@ -51,26 +51,31 @@ void Intarr::printarr()
     std::cout << std::endl;
     std::cout <<"Elementiv :" <<siz<<std::endl;
 }
-void Intarr::scanstr()
+void Intarr::scanarr()
 {
     int x;
     delete[] arr;
     siz=0;
-    size_t n=1;
+    size_t n=1,lich=0;
     reserv=16;
     arr=new int[reserv];
     while(true)
     {
         std::cin>>x;
         if (x==0)
-        break;
-        arr[siz]=x;
-        siz++;
-        if (siz+1==reserv)
+        {
+            siz=lich;
+            break;
+        }
+        arr[lich]=x;
+        lich++;
+        if (lich+1==reserv)
         {
             n++;
             reserv*=n;
+            siz=lich;
             this->resiz(reserv);
+            siz=lich;
         }
     }
 }
@@ -123,7 +128,19 @@ void Intarr::operator+=(int x)
 void Intarr::operator*=(int x)
 {
     for (size_t i=0;i<siz;i++)
-        arr[i]+=x;
+        arr[i]*=x;
+}
+Intarr operator+(const Intarr &a,int x)
+{
+    Intarr res=a;
+    res+=x;
+    return res;
+}
+Intarr operator*(const Intarr &a,int x)
+{
+    Intarr res=a;
+    res*=x;
+    return res;
 }
 void Intarr:: dltelmt( int a)
 {
@@ -154,5 +171,3 @@ void  Intarr::findelm(int a, size_t &number)const
     }
     number=numeric_limits <size_t>::max();
 }
-
-
