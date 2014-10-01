@@ -11,12 +11,12 @@ public:
     Intarr(const Intarr &rhs);
     Intarr operator=(const Intarr& rhs);
     void printarr();
-     void scanstr();
+     void scanarr();
     size_t  get_size () const;
     const int* get_arr()const {return arr;};
     int&  operator [] (size_t idx);
     const int& operator[](size_t idx)const;
-    void operator+=(const Intarr&a);
+    void operator+=(const Intarr& a);
     void operator*=(const Intarr&a);
     void operator+=(int x);
     void operator*=(int x);
@@ -29,7 +29,7 @@ private:
     void resiz(size_t newsiz);
 };
 Intarr  operator+ (const Intarr& a,const Intarr& b);
-Intarr operator+(const Intarr& a,int x);
+Intarr operator+( const Intarr& a,int x);
 Intarr operator* (const Intarr& a,const Intarr& b);
-Intarr operator* (const Intarr& a,int x);
+Intarr operator* ( const Intarr& a,int x);
 #endif // INTSTR_H_INCLUDED
